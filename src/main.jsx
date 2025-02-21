@@ -1,13 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route } from "react-router-dom"; // Agora importando corretamente
-import Home from "./src/pages/Home";
-import Checklist from "./src/pages/Checklist";
-import Checklist2 from "./src/pages/Checklist2";
-import Checklist3 from "./src/pages/Checklist3";
-import Checklist4 from "./src/pages/Checklist4";
-import Conclusao from "./src/pages/Conclusao";
-import GlobalStyles from "./src/styles/globalStyles";
+import Home from "./pages/Home";
+import Checklist from "./pages/Checklist";
+import Checklist2 from "./pages/Checklist2";
+import Checklist3 from "./pages/Checklist3";
+import Checklist4 from "./pages/Checklist4";
+import Conclusao from "./pages/Conclusao";
+import GlobalStyles from "./styles/globalStyles";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
