@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://amandagpf.github.io/checklist_testes_dev/", 
+  "homepage": "https://amandagpf.github.io/checklist_testes_dev/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
