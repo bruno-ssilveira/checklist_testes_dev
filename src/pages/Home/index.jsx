@@ -14,7 +14,7 @@ function Home() {
         </DivTexts>
 
         <SVGpersonCheck />
-        <Link to="/checklist">
+        <Link to="/checklist/checklist1.jsx">
           <Button>Começar checklist!</Button>
         </Link>
 

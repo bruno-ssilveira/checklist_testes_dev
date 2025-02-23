@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle } from './styles';
-import { Container } from './styles';
-import { DivTexts } from './styles';
-import { Button } from './styles';
-import { ButtonSecondary } from './styles';
+import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container,  DivTexts, Button, ButtonSecondary} from './styles';
 
-function Checklist() {
+function Checklist3() {
     const [checkedItems, setCheckedItems] = useState({});
 
     // Total de checkboxes
-    const totalCheckboxes = 6;
+    const totalCheckboxes = 5;
 
     // Função para verificar se todos os checkboxes estão marcados
     const allChecked = Object.keys(checkedItems).length === totalCheckboxes && 
@@ -28,7 +24,7 @@ function Checklist() {
     return (
         <Container>
             <DivTexts>
-                <Title>Consistência Visual</Title>
+                <Title>Fluxo e Navegação</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
             </DivTexts>
 
@@ -44,9 +40,9 @@ function Checklist() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[0] || false}>
-                            As cores seguem o padrão previsto no Figma?
+                            O fluxo de navegação é lógico e intuitivo?
                         </ItemText>
-                        <ItemDescription>(ex.: Botões de salvar sempre com a cor verde e botões de download com outlined e ícone.)</ItemDescription>
+                        <ItemDescription>(ex.: O botão "Voltar" leva sempre para a tela anterior, sem desvios inesperados.)</ItemDescription>
                     </Description>
                 </ItemContainer>
 
@@ -61,9 +57,9 @@ function Checklist() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[1] || false}>
-                            A tipografia possui padrão de fontes e tamanhos esperados?
+                            As funcionalidades importantes estão sempre acessíveis em todas as telas?
                         </ItemText>
-                        <ItemDescription>(ex.: O título está sempre com Roboto Bold 24px.)</ItemDescription>
+                        <ItemDescription>(ex.: O botão "Novo Item" está sempre visível.)</ItemDescription>
                     </Description>
                 </ItemContainer>
 
@@ -78,9 +74,9 @@ function Checklist() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[2] || false}>
-                            Os ícones são intuitivos e mantêm o mesmo estilo e funcionalidade?
+                            O usuário consegue realizar ações com o mínimo de cliques possível?
                         </ItemText>
-                        <ItemDescription>(ex.: O ícone de "Download" é sempre o mesmo, como no Figma.)</ItemDescription>
+                        <ItemDescription>(ex.: O usuário consegue adicionar um item ao carrinho com um clique.)</ItemDescription>
                     </Description>
                 </ItemContainer>
                 <ItemContainer>
@@ -94,9 +90,9 @@ function Checklist() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[3] || false}>
-                            O espaçamento entre os elementos é consistente e adequado?
+                            A navegação entre as telas é consistente?
                         </ItemText>
-                        <ItemDescription>(ex.: O espaçamento entre os botões é sempre de 16px.)</ItemDescription>
+                        <ItemDescription>(ex.: O menu lateral está presente em todas as telas, oferecendo as mesmas opções.)</ItemDescription>
                     </Description>
                 </ItemContainer>
                 <ItemContainer>
@@ -110,32 +106,18 @@ function Checklist() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[4] || false}>
-                            Todos os elementos estão alinhados corretamente, sem desvio de padrões?
+                            O sistema usa breadcrumbs para indicar o caminho de navegação?
                         </ItemText>
-                        <ItemDescription>(ex.: Os botões estão sempre alinhados à direita.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(5)} 
-                            checked={checkedItems[5] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[5] || false}>
-                            Os componentes estão com os tamanhos proporcionais e consistentes em todas as telas?
-                        </ItemText>
-                        <ItemDescription>(ex.: Todos os botões têm 48px de altura.)</ItemDescription>
+                        <ItemDescription>(ex.: Na página de "Detalhes do Produto", os breadcrumbs mostram "Home > Categoria > Produto".)</ItemDescription>
                     </Description>
                 </ItemContainer>
             </ChecklistContainer>
 
             <Navigation>
-                <ButtonSecondary>Voltar</ButtonSecondary>
-                <Link to="/checklist2">
+                <Link to="/checklist/checklist2.jsx">
+                    <ButtonSecondary>Voltar</ButtonSecondary>
+                </Link>
+                <Link to="/checklist/checklist4.jsx">
                     <Button disabled={!allChecked}>Avançar!</Button>
                 </Link>
             </Navigation>
@@ -143,4 +125,4 @@ function Checklist() {
     );
 }
 
-export default Checklist;
+export default Checklist3;

@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle } from './styles';
-import { Container } from './styles';
-import { DivTexts } from './styles';
-import { Button } from './styles';
-import { ButtonSecondary } from './styles';
+import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container,  DivTexts, Button, ButtonSecondary} from './styles';
 
-function Checklist3() {
+function Checklist4() {
     const [checkedItems, setCheckedItems] = useState({});
 
     // Total de checkboxes
-    const totalCheckboxes = 5;
+    const totalCheckboxes = 4;
 
     // Função para verificar se todos os checkboxes estão marcados
     const allChecked = Object.keys(checkedItems).length === totalCheckboxes && 
@@ -28,7 +24,7 @@ function Checklist3() {
     return (
         <Container>
             <DivTexts>
-                <Title>Fluxo e Navegação</Title>
+                <Title>Alinhamento com Padrões e Expectativas</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
             </DivTexts>
 
@@ -44,9 +40,9 @@ function Checklist3() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[0] || false}>
-                            O fluxo de navegação é lógico e intuitivo?
+                            A interface segue os padrões do Design System?
                         </ItemText>
-                        <ItemDescription>(ex.: O botão "Voltar" leva sempre para a tela anterior, sem desvios inesperados.)</ItemDescription>
+                        <ItemDescription>(ex.: O ícone de lupa é usado consistentemente para busca em todas as telas.)</ItemDescription>
                     </Description>
                 </ItemContainer>
 
@@ -61,9 +57,9 @@ function Checklist3() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[1] || false}>
-                            As funcionalidades importantes estão sempre acessíveis em todas as telas?
+                            Os textos em modais, informativos, e outros elementos seguem o que foi especificado no Figma?
                         </ItemText>
-                        <ItemDescription>(ex.: O botão "Novo Item" está sempre visível.)</ItemDescription>
+                        <ItemDescription>(ex.: O botão "Confirmar" está escrito exatamente como no Figma e com a mesma formatação.)</ItemDescription>
                     </Description>
                 </ItemContainer>
 
@@ -78,9 +74,9 @@ function Checklist3() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[2] || false}>
-                            O usuário consegue realizar ações com o mínimo de cliques possível?
+                            Em telas maiores, há um limite de largura para evitar que o conteúdo fique excessivamente esticado?
                         </ItemText>
-                        <ItemDescription>(ex.: O usuário consegue adicionar um item ao carrinho com um clique.)</ItemDescription>
+                        <ItemDescription>(ex.: O conteúdo da página é centralizado e não ultrapassa 1200px de largura em telas grandes.)</ItemDescription>
                     </Description>
                 </ItemContainer>
                 <ItemContainer>
@@ -94,34 +90,18 @@ function Checklist3() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[3] || false}>
-                            A navegação entre as telas é consistente?
+                            A interface se adapta corretamente a telas menores?
                         </ItemText>
-                        <ItemDescription>(ex.: O menu lateral está presente em todas as telas, oferecendo as mesmas opções.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(4)} 
-                            checked={checkedItems[4] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[4] || false}>
-                            O sistema usa breadcrumbs para indicar o caminho de navegação?
-                        </ItemText>
-                        <ItemDescription>(ex.: Na página de "Detalhes do Produto", os breadcrumbs mostram "Home > Categoria > Produto".)</ItemDescription>
+                        <ItemDescription>(ex.: Em dispositivos móveis, o texto não fica muito pequeno, e os elementos não se sobrepõem.)</ItemDescription>
                     </Description>
                 </ItemContainer>
             </ChecklistContainer>
 
             <Navigation>
-                <Link to="/checklist2">
+                <Link to="/checklist/checklist3.jsx">
                     <ButtonSecondary>Voltar</ButtonSecondary>
                 </Link>
-                <Link to="/checklist4">
+                <Link to="/conclusao">
                     <Button disabled={!allChecked}>Avançar!</Button>
                 </Link>
             </Navigation>
@@ -129,4 +109,4 @@ function Checklist3() {
     );
 }
 
-export default Checklist3;
+export default Checklist4;
