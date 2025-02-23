@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle } from './styles';
-import { Container } from './styles';
-import { DivTexts } from './styles';
-import { Button } from './styles';
-import { ButtonSecondary } from './styles';
+import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container, DivTexts, Button, ButtonSecondary} from './styles';
 
-function Checklist2() {
+function Checklist1() {
     const [checkedItems, setCheckedItems] = useState({});
 
     // Total de checkboxes
@@ -28,7 +24,7 @@ function Checklist2() {
     return (
         <Container>
             <DivTexts>
-                <Title>Consistência Comportamental</Title>
+                <Title>Consistência Visual</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
             </DivTexts>
 
@@ -44,9 +40,9 @@ function Checklist2() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[0] || false}>
-                            As interações (pop-ups, animações) seguem o mesmo padrão?
+                            As cores seguem o padrão previsto no Figma?
                         </ItemText>
-                        <ItemDescription>(ex.: O pop-up de confirmação sempre aparece no centro da tela.)</ItemDescription>
+                        <ItemDescription>(ex.: Botões de salvar sempre com a cor verde e botões de download com outlined e ícone.)</ItemDescription>
                     </Description>
                 </ItemContainer>
 
@@ -61,9 +57,9 @@ function Checklist2() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[1] || false}>
-                            Os atalhos funcionam da mesma forma em todas as telas?
+                            A tipografia possui padrão de fontes e tamanhos esperados?
                         </ItemText>
-                        <ItemDescription>(ex.: Ao segurar e arranjar um item, ele desliza para o lado de forma consistente.)</ItemDescription>
+                        <ItemDescription>(ex.: O título está sempre com Roboto Bold 24px.)</ItemDescription>
                     </Description>
                 </ItemContainer>
 
@@ -78,9 +74,9 @@ function Checklist2() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[2] || false}>
-                            As mensagens de erro seguem um padrão claro?
+                            Os ícones são intuitivos e mantêm o mesmo estilo e funcionalidade?
                         </ItemText>
-                        <ItemDescription>(ex.: As mensagens de erro estão sempre em vermelho e com o mesmo formato.)</ItemDescription>
+                        <ItemDescription>(ex.: O ícone de "Download" é sempre o mesmo, como no Figma.)</ItemDescription>
                     </Description>
                 </ItemContainer>
                 <ItemContainer>
@@ -94,9 +90,9 @@ function Checklist2() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[3] || false}>
-                            Os feedbacks visuais (como mudança de cor ao passar o mouse) são consistentes?
+                            O espaçamento entre os elementos é consistente e adequado?
                         </ItemText>
-                        <ItemDescription>(ex.: O botão sempre muda de cor ao ser clicado.)</ItemDescription>
+                        <ItemDescription>(ex.: O espaçamento entre os botões é sempre de 16px.)</ItemDescription>
                     </Description>
                 </ItemContainer>
                 <ItemContainer>
@@ -110,9 +106,9 @@ function Checklist2() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[4] || false}>
-                            Ações de risco (como excluir itens) sempre pedem confirmação antes de prosseguir?
+                            Todos os elementos estão alinhados corretamente, sem desvio de padrões?
                         </ItemText>
-                        <ItemDescription>(ex.: Ao tentar excluir um item, sempre aparece uma janela de confirmação.)</ItemDescription>
+                        <ItemDescription>(ex.: Os botões estão sempre alinhados à direita.)</ItemDescription>
                     </Description>
                 </ItemContainer>
                 <ItemContainer>
@@ -126,18 +122,16 @@ function Checklist2() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[5] || false}>
-                            O estado de carregamento é consistente em todas as telas?
+                            Os componentes estão com os tamanhos proporcionais e consistentes em todas as telas?
                         </ItemText>
-                        <ItemDescription>(ex.: O ícone de carregamento sempre é o mesmo, como uma barra ou um círculo girando.)</ItemDescription>
+                        <ItemDescription>(ex.: Todos os botões têm 48px de altura.)</ItemDescription>
                     </Description>
                 </ItemContainer>
             </ChecklistContainer>
 
             <Navigation>
-                <Link to="/checklist">
-                    <ButtonSecondary>Voltar</ButtonSecondary>
-                </Link>
-                <Link to="/checklist3">
+                <ButtonSecondary>Voltar</ButtonSecondary>
+                <Link to="/checklist/checklist2.jsx">
                     <Button disabled={!allChecked}>Avançar!</Button>
                 </Link>
             </Navigation>
@@ -145,4 +139,4 @@ function Checklist2() {
     );
 }
 
-export default Checklist2;
+export default Checklist1;

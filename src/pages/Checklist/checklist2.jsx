@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle } from './styles';
-import { Container } from './styles';
-import { DivTexts } from './styles';
-import { Button } from './styles';
-import { ButtonSecondary } from './styles';
+import { Container, DivTexts, Button, ButtonSecondary, Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle } from './styles';
 
-function Checklist4() {
+function Checklist2() {
     const [checkedItems, setCheckedItems] = useState({});
 
     // Total de checkboxes
-    const totalCheckboxes = 4;
+    const totalCheckboxes = 6;
 
     // Função para verificar se todos os checkboxes estão marcados
     const allChecked = Object.keys(checkedItems).length === totalCheckboxes && 
@@ -28,7 +24,7 @@ function Checklist4() {
     return (
         <Container>
             <DivTexts>
-                <Title>Alinhamento com Padrões e Expectativas</Title>
+                <Title>Consistência Comportamental</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
             </DivTexts>
 
@@ -44,9 +40,9 @@ function Checklist4() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[0] || false}>
-                            A interface segue os padrões do Design System?
+                            As interações (pop-ups, animações) seguem o mesmo padrão?
                         </ItemText>
-                        <ItemDescription>(ex.: O ícone de lupa é usado consistentemente para busca em todas as telas.)</ItemDescription>
+                        <ItemDescription>(ex.: O pop-up de confirmação sempre aparece no centro da tela.)</ItemDescription>
                     </Description>
                 </ItemContainer>
 
@@ -61,9 +57,9 @@ function Checklist4() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[1] || false}>
-                            Os textos em modais, informativos, e outros elementos seguem o que foi especificado no Figma?
+                            Os atalhos funcionam da mesma forma em todas as telas?
                         </ItemText>
-                        <ItemDescription>(ex.: O botão "Confirmar" está escrito exatamente como no Figma e com a mesma formatação.)</ItemDescription>
+                        <ItemDescription>(ex.: Ao segurar e arranjar um item, ele desliza para o lado de forma consistente.)</ItemDescription>
                     </Description>
                 </ItemContainer>
 
@@ -78,9 +74,9 @@ function Checklist4() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[2] || false}>
-                            Em telas maiores, há um limite de largura para evitar que o conteúdo fique excessivamente esticado?
+                            As mensagens de erro seguem um padrão claro?
                         </ItemText>
-                        <ItemDescription>(ex.: O conteúdo da página é centralizado e não ultrapassa 1200px de largura em telas grandes.)</ItemDescription>
+                        <ItemDescription>(ex.: As mensagens de erro estão sempre em vermelho e com o mesmo formato.)</ItemDescription>
                     </Description>
                 </ItemContainer>
                 <ItemContainer>
@@ -94,18 +90,50 @@ function Checklist4() {
                     </Checkbox>
                     <Description>
                         <ItemText isChecked={checkedItems[3] || false}>
-                            A interface se adapta corretamente a telas menores?
+                            Os feedbacks visuais (como mudança de cor ao passar o mouse) são consistentes?
                         </ItemText>
-                        <ItemDescription>(ex.: Em dispositivos móveis, o texto não fica muito pequeno, e os elementos não se sobrepõem.)</ItemDescription>
+                        <ItemDescription>(ex.: O botão sempre muda de cor ao ser clicado.)</ItemDescription>
+                    </Description>
+                </ItemContainer>
+                <ItemContainer>
+                    <Checkbox>
+                        <input 
+                            type="checkbox" 
+                            onChange={() => handleCheckboxChange(4)} 
+                            checked={checkedItems[4] || false} 
+                        />
+                        <span></span>
+                    </Checkbox>
+                    <Description>
+                        <ItemText isChecked={checkedItems[4] || false}>
+                            Ações de risco (como excluir itens) sempre pedem confirmação antes de prosseguir?
+                        </ItemText>
+                        <ItemDescription>(ex.: Ao tentar excluir um item, sempre aparece uma janela de confirmação.)</ItemDescription>
+                    </Description>
+                </ItemContainer>
+                <ItemContainer>
+                    <Checkbox>
+                        <input 
+                            type="checkbox" 
+                            onChange={() => handleCheckboxChange(5)} 
+                            checked={checkedItems[5] || false} 
+                        />
+                        <span></span>
+                    </Checkbox>
+                    <Description>
+                        <ItemText isChecked={checkedItems[5] || false}>
+                            O estado de carregamento é consistente em todas as telas?
+                        </ItemText>
+                        <ItemDescription>(ex.: O ícone de carregamento sempre é o mesmo, como uma barra ou um círculo girando.)</ItemDescription>
                     </Description>
                 </ItemContainer>
             </ChecklistContainer>
 
             <Navigation>
-                <Link to="/checklist3">
+                <Link to="/checklist/checklist1.jsx">
                     <ButtonSecondary>Voltar</ButtonSecondary>
                 </Link>
-                <Link to="/conclusao">
+                <Link to="/checklist/checklist3.jsx">
                     <Button disabled={!allChecked}>Avançar!</Button>
                 </Link>
             </Navigation>
@@ -113,4 +141,4 @@ function Checklist4() {
     );
 }
 
-export default Checklist4;
+export default Checklist2;

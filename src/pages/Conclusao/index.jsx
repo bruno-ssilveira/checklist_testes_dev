@@ -14,7 +14,7 @@ function Conclusao() {
         </DivTexts>
 
         <Gif />
-        <Link to="/checklist">
+        <Link to="/checklist/checklist1.jsx">
           <Button>Iniciar outro checklist!</Button>
         </Link>
 
