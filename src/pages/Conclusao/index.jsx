@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { DivTexts, Title, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container, Button } from './styles';
 import Gif from '../../assets/gif';
+import PrimaryButton from "../../components/primaryButton/primaryButton";
 
 function Conclusao() {
   return (
@@ -14,9 +14,8 @@ function Conclusao() {
         </DivTexts>
 
         <Gif />
-        <Link to="/checklist/checklist1.jsx">
-          <Button>Iniciar outro checklist!</Button>
-        </Link>
+        
+        <PrimaryButton caminho="/checklist/checklist1" texto="Iniciar outro checklist!" />
 
       </Container>
    </div>
