@@ -39,19 +39,6 @@ export const SVGpersonCheck = styled.svg`
   height: auto;
 `;
 
-export const Button = styled.button`
-  background-color:rgb(113, 51, 129); 
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  padding: 16px 32px;
-  font-size: 24px;
-  border-radius: 50px;
-  width: 364px;
-  cursor: pointer;
-`;
-
 export const ChecklistContainer = styled.div`
   padding: 20px;
   max-width: 600px;

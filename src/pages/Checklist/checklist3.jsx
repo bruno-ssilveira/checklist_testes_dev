@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { React, useState } from 'react';
 import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container,  DivTexts, Button, ButtonSecondary} from './styles';
+import PrimaryButton from "../../components/primaryButton/primaryButton";
+import { Link } from 'react-router-dom';
 
 function Checklist3() {
     const [checkedItems, setCheckedItems] = useState({});
@@ -114,12 +115,10 @@ function Checklist3() {
             </ChecklistContainer>
 
             <Navigation>
-                <Link to="/checklist/checklist2.jsx">
+                <Link to="/checklist/checklist2">
                     <ButtonSecondary>Voltar</ButtonSecondary>
                 </Link>
-                <Link to="/checklist/checklist4.jsx">
-                    <Button disabled={!allChecked}>Avançar!</Button>
-                </Link>
+                <PrimaryButton caminho="/checklist/checklist4" texto="Avançar!" disable={!allChecked}/>
             </Navigation>
         </Container>
     );

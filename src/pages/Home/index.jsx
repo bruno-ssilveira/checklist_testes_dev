@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { DivTexts, Title, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container, Button } from './styles';
+import { DivTexts, Title, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container} from './styles';
 import SVGpersonCheck from '../../assets/personCheck';
+import PrimaryButton from "../../components/primaryButton/primaryButton";
 
 function Home() {
   return (
@@ -14,9 +15,8 @@ function Home() {
         </DivTexts>
 
         <SVGpersonCheck />
-        <Link to="/checklist/checklist1.jsx">
-          <Button>Começar checklist!</Button>
-        </Link>
+
+        <PrimaryButton caminho="../checklist/checklist1" texto="Começar Checklist!"/>
 
       </Container>
    </div>
