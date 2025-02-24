@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { React, useState } from 'react';
 import { Title, Subtitle, Container, DivTexts, Navigation, ChecklistContainer } from './styles';
 import PrimaryButton from "../../components/primaryButton/primaryButton";
 import SecondaryButton from "../../components/secondaryButton/secondaryButton";
+import StepperComponent from "../../components/stepper/stepper";
 import CheckItem from '../../components/checkItem/checkItem';
 
 function Checklist4() {
@@ -28,6 +29,7 @@ function Checklist4() {
 
     return (
         <Container>
+            <StepperComponent page={3} />
             <DivTexts>
                 <Title>Padrões e Expectativas</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>

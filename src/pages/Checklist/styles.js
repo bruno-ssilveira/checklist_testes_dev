@@ -63,6 +63,8 @@ export const Subtitle = styled.h2`
 
 export const ChecklistContainer = styled.div`
   width: 100%;
+  height: 500px;
+  overflow: auto;
 `;
 
 export const Navigation = styled.div`

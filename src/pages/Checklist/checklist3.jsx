@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { React, useState } from 'react';
 import { Title, Subtitle, Container, DivTexts, Navigation, ChecklistContainer } from './styles';
 import PrimaryButton from "../../components/primaryButton/primaryButton";
 import SecondaryButton from "../../components/secondaryButton/secondaryButton";
+import StepperComponent from "../../components/stepper/stepper";
 import CheckItem from '../../components/checkItem/checkItem';
 
 function Checklist3() {
@@ -29,6 +30,7 @@ function Checklist3() {
 
     return (
         <Container>
+            <StepperComponent page={2} />
             <DivTexts>
                 <Title>Fluxo e Navegação</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
