@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container,  DivTexts, Button, ButtonSecondary} from './styles';
 import PrimaryButton from "../../components/primaryButton/primaryButton";
 import { Link } from 'react-router-dom';
+import StepperComponent from "../../components/stepper/stepper";
 
 function Checklist3() {
     const [checkedItems, setCheckedItems] = useState({});
@@ -24,6 +25,7 @@ function Checklist3() {
 
     return (
         <Container>
+            <StepperComponent page={2} />
             <DivTexts>
                 <Title>Fluxo e Navegação</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>

@@ -106,6 +106,8 @@ export const ButtonSecondary = styled.button`
 
 export const ChecklistContainer = styled.div`
   width: 100%;
+  height: 500px;
+  overflow: auto;
 `;
 
 export const ItemContainer = styled.div`

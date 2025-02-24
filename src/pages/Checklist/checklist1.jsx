@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container, DivTexts, ButtonSecondary} from './styles';
 import PrimaryButton from "../../components/primaryButton/primaryButton";
+import StepperComponent from "../../components/stepper/stepper";
 
 function Checklist1() {
     const [checkedItems, setCheckedItems] = useState({});
@@ -23,6 +24,7 @@ function Checklist1() {
 
     return (
         <Container>
+            <StepperComponent page={0} />
             <DivTexts>
                 <Title>Consistência Visual</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
