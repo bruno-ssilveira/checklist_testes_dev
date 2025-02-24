@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function PrimaryButton(props) {
     return(
         <Link to={props.caminho}>
-          <Button disabled={props.disable}>{props.texto}</Button>
+          <Button disabled={props.disabled}>{props.texto}</Button>
         </Link>
     )
 }
