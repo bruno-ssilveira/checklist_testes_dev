@@ -1,12 +1,14 @@
 export const COLORS = {
     purple: "rgb(113, 51, 129)",
     lightPurple: "rgb(128, 78, 141)",
+    transparentPurple: "rgba(113, 51, 129, 0.5)",
     dark_gray: '#5D6275',
     medium_gray: '#A6ABBC',
     gray: '#E5ECFC',
     light_gray: '#F4F7FE',
     white: '#FFFFFF',
-    green: '#38C682'
+    green: '#38C682',
+    transparent: 'transparent',
 }
 
 export const FONT_SIZE = {
