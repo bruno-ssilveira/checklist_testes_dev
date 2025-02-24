@@ -8,7 +8,7 @@ export const Container = styled.div`
   background-color: #f4f4f4; 
   width: 80vh;
   min-width: 400px;
-  min-height: 800px;
+  min-height: 700px;
   max-width: 900px;
   max-height: 90vh;
   padding: 32px;
@@ -20,13 +20,21 @@ export const Container = styled.div`
     width: 100%;
   }
 
-    @media (max-width: 992px) {
-        max-height: 90vh;
-        min-height: 700px;
-        max-width: 90vh;
-        min-width: 400px;
-        gap: 16px;
-    }
+  @media (max-width: 992px) {
+      max-height: 90vh;
+      min-height: 700px;
+      max-width: 90vh;
+      min-width: 400px;
+      gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+      width: 90%;
+      max-width: 90%;
+      min-height: 100vh;
+      padding: 16px;
+      gap: 8px;
+  }
 
 `;
 
@@ -72,4 +80,8 @@ export const Navigation = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+
+  @media (max-width: 400px) {
+    margin-top: 10px;
+  }
 `;

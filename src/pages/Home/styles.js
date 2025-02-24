@@ -9,16 +9,29 @@ export const Container = styled.div`
   width: 50vh;
   height: 80vh;
   min-width: 500px;
-  min-height: 800px;
+  min-height: 700px;
   padding: 8%;
   border-radius: 32px;
   gap: 56px;
+
+  @media (max-width: 400px) {
+    width: 90%;
+    max-width: 90%;
+    min-height: 100%;
+    padding: 16px;
+    gap: 8px;
+    border-radius: 16px;
+  }
 `;
 
 export const DivTexts = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media (max-width: 400px) {
+    width: 70%;
+  }
 `;
 
 export const Title = styled.h1`
