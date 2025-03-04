@@ -53,6 +53,7 @@ export const Description = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  cursor: pointer;
 
       @media (max-width: 576px) {
       gap: 2px;

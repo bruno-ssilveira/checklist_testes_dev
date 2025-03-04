@@ -6,6 +6,11 @@ const StyledGif = styled.img`
     width: 100%;
     max-width: 600px;
     min-width: 150px;
+
+  @media (max-width: 400px) {
+    width: 100%;
+    max-width: 400px;
+  }
 `;
 
 const Gif = () => {

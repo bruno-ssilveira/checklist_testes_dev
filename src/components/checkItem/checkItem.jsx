@@ -1,26 +1,23 @@
-import { useState } from "react";
 import { ItemContainer, Description, ItemText, ItemDescription, Checkbox } from "./checkItem.style";
 
-function CheckItem({ index, text, textDescription, onCheckChange }) {
-    const [isChecked, setIsChecked] = useState(false);
-
+function CheckItem({ index, text, textDescription, isChecked, onCheckChange }) {
     const handleCheckboxChange = () => {
         const newCheckedState = !isChecked;
-        setIsChecked(newCheckedState);
         onCheckChange(index, newCheckedState);  // Passa a mudança para o componente pai
     };
 
     return (
         <ItemContainer>
             <Checkbox>
-                <input 
+                <input
+                    id={`checkbox-${index}`} // Atribuindo id único para cada checkbox
                     type="checkbox" 
                     onChange={handleCheckboxChange} 
-                    checked={isChecked} 
+                    checked={isChecked} // Recebe o estado do checkbox do componente pai
                 />
                 <span></span>
             </Checkbox>
-            <Description>
+            <Description onClick={handleCheckboxChange}>
                 <ItemText isChecked={isChecked}>
                     {text}
                 </ItemText>

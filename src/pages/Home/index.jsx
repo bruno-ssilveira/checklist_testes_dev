@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { DivTexts, Title, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container} from './styles';
+import useNavigate from 'react-router-dom';
+import { DivTexts, Title, Subtitle, Container} from './styles';
 import SVGpersonCheck from '../../assets/personCheck';
 import PrimaryButton from "../../components/primaryButton/primaryButton";
 
 function Home() {
+
+  const navigate = useNavigate()
+
+  const resetChecklist = () => {
+    // Limpa os itens do checklist armazenados no localStorage
+    localStorage.clear()
+  }
+
   return (
    <div>
       <Container>
@@ -16,7 +24,7 @@ function Home() {
 
         <SVGpersonCheck />
 
-        <PrimaryButton caminho="../checklist/checklist1" texto="Começar Checklist!"/>
+        <PrimaryButton caminho="../checklist/checklist1" click={resetChecklist} texto="Começar Checklist!"/>
 
       </Container>
    </div>
