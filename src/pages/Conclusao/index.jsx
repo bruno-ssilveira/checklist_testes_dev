@@ -5,7 +5,6 @@ import PrimaryButton from "../../components/primaryButton/primaryButton"
 import { useNavigate } from 'react-router-dom'
 
 function Conclusao() {
-  const navigate = useNavigate()
 
   const resetChecklist = () => {
     // Limpa os itens do checklist armazenados no localStorage

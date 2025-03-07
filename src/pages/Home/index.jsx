@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-import useNavigate from 'react-router-dom';
+import React from 'react';
 import { DivTexts, Title, Subtitle, Container} from './styles';
 import SVGpersonCheck from '../../assets/personCheck';
 import PrimaryButton from "../../components/primaryButton/primaryButton";
 
 function Home() {
-
-  const navigate = useNavigate()
 
   const resetChecklist = () => {
     // Limpa os itens do checklist armazenados no localStorage
