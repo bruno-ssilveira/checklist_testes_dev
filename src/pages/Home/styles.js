@@ -9,16 +9,33 @@ export const Container = styled.div`
   width: 50vh;
   height: 80vh;
   min-width: 500px;
-  min-height: 800px;
+  min-height: 700px;
   padding: 8%;
   border-radius: 32px;
   gap: 56px;
+
+  @media (max-width: 400px) {
+    width: 90%;
+    max-width: 90%;
+    min-height: 100%;
+    padding: 16px;
+    gap: 8px;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 1550px) {
+    min-height: 650px;
+  }
 `;
 
 export const DivTexts = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media (max-width: 400px) {
+    width: 70%;
+  }
 `;
 
 export const Title = styled.h1`
@@ -37,19 +54,6 @@ export const Subtitle = styled.h2`
 export const SVGpersonCheck = styled.svg`
   width: 40%;  
   height: auto;
-`;
-
-export const Button = styled.button`
-  background-color:rgb(113, 51, 129); 
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  padding: 16px 32px;
-  font-size: 24px;
-  border-radius: 50px;
-  width: 364px;
-  cursor: pointer;
 `;
 
 export const ChecklistContainer = styled.div`

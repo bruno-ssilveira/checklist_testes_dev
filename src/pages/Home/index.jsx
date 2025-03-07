@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { DivTexts, Title, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container, Button } from './styles';
+import React from 'react';
+import { DivTexts, Title, Subtitle, Container} from './styles';
 import SVGpersonCheck from '../../assets/personCheck';
+import PrimaryButton from "../../components/primaryButton/primaryButton";
 
 function Home() {
+
+  const resetChecklist = () => {
+    // Limpa os itens do checklist armazenados no localStorage
+    localStorage.clear()
+  }
+
   return (
    <div>
       <Container>
@@ -14,9 +20,8 @@ function Home() {
         </DivTexts>
 
         <SVGpersonCheck />
-        <Link to="/checklist/checklist1.jsx">
-          <Button>Começar checklist!</Button>
-        </Link>
+
+        <PrimaryButton caminho="../checklist/checklist1" click={resetChecklist} texto="Começar Checklist!"/>
 
       </Container>
    </div>

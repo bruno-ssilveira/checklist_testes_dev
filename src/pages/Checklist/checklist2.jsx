@@ -1,144 +1,76 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, DivTexts, Button, ButtonSecondary, Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle } from './styles';
+import { useEffect, useState } from 'react'
+import { Title, Subtitle, Container, DivTexts, Navigation, ChecklistContainer } from './styles'
+import PrimaryButton from "../../components/primaryButton/primaryButton"
+import SecondaryButton from "../../components/secondaryButton/secondaryButton"
+import StepperComponent from "../../components/stepper/stepper"
+import CheckItem from '../../components/checkItem/checkItem'
 
 function Checklist2() {
-    const [checkedItems, setCheckedItems] = useState({});
+    const [items, setItems] = useState([
+        { text: "As interações (pop-ups, animações) seguem o mesmo padrão?", textDescription: "Ex: O pop-up de confirmação sempre aparece no centro da tela.", isChecked: false },
+        { text: "Os atalhos funcionam da mesma forma em todas as telas?", textDescription: "Ex: Ao segurar e arranjar um item, ele desliza para o lado de forma consistente.", isChecked: false },
+        { text: "As mensagens de erro seguem um padrão claro?", textDescription: "Ex: As mensagens de erro estão sempre em vermelho e com o mesmo formato.", isChecked: false },
+        { text: "Os feedbacks visuais (como mudança de cor ao passar o mouse) são consistentes?", textDescription: "Ex: O botão sempre muda de cor ao ser clicado.", isChecked: false },
+        { text: "Ações de risco (como excluir itens) sempre pedem confirmação antes de prosseguir?", textDescription: "Ex: Ao tentar excluir um item, sempre aparece uma janela de confirmação.", isChecked: false },
+        { text: "O estado de carregamento é consistente em todas as telas?", textDescription: "Ex: O ícone de carregamento sempre é o mesmo, como uma barra ou um círculo girando.", isChecked: false }
+    ])
 
-    // Total de checkboxes
-    const totalCheckboxes = 6;
+    const [isButtonEnabled, setIsButtonEnabled] = useState(false)
 
-    // Função para verificar se todos os checkboxes estão marcados
-    const allChecked = Object.keys(checkedItems).length === totalCheckboxes && 
-                        Object.values(checkedItems).every(value => value);
+    // Recuperar o estado salvo do localStorage
+    useEffect(() => {
+        const savedItems = localStorage.getItem(`checklist-items-page-${1}`)
+        if (savedItems) {
+            const loadedItems = JSON.parse(savedItems)
+            setItems(loadedItems)
 
-    const handleCheckboxChange = (index) => {
-        setCheckedItems((prev) => ({
-            ...prev,
-            [index]: !prev[index]  
-        }));
-    };
+            // Verifica se todos os checkboxes estão marcados após carregar
+            const allChecked = loadedItems.every(item => item.isChecked)
+            setIsButtonEnabled(allChecked)
+        }
+    }, [])
 
-    
+    // Função para verificar se todos os itens estão marcados
+    const handleCheckChange = (index, checked) => {
+        const updatedItems = [...items]
+        updatedItems[index].isChecked = checked
+        setItems(updatedItems)
 
-    return (
-        <Container>
-            <DivTexts>
-                <Title>Consistência Comportamental</Title>
-                <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
-            </DivTexts>
+        localStorage.setItem(`checklist-items-page-${1}`, JSON.stringify(updatedItems))
 
-            <ChecklistContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(0)} 
-                            checked={checkedItems[0] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[0] || false}>
-                            As interações (pop-ups, animações) seguem o mesmo padrão?
-                        </ItemText>
-                        <ItemDescription>(ex.: O pop-up de confirmação sempre aparece no centro da tela.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
+        // Verifica se todos os itens estão marcados
+        const allChecked = updatedItems.every(item => item.isChecked)
+        setIsButtonEnabled(allChecked)
+    }
 
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(1)} 
-                            checked={checkedItems[1] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[1] || false}>
-                            Os atalhos funcionam da mesma forma em todas as telas?
-                        </ItemText>
-                        <ItemDescription>(ex.: Ao segurar e arranjar um item, ele desliza para o lado de forma consistente.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
+  return (
+      <Container>
+          <StepperComponent page={1} />
+          <DivTexts>
+              <Title>Consistência Comportamental</Title>
+              <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
+          </DivTexts>
 
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(2)} 
-                            checked={checkedItems[2] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[2] || false}>
-                            As mensagens de erro seguem um padrão claro?
-                        </ItemText>
-                        <ItemDescription>(ex.: As mensagens de erro estão sempre em vermelho e com o mesmo formato.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(3)} 
-                            checked={checkedItems[3] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[3] || false}>
-                            Os feedbacks visuais (como mudança de cor ao passar o mouse) são consistentes?
-                        </ItemText>
-                        <ItemDescription>(ex.: O botão sempre muda de cor ao ser clicado.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(4)} 
-                            checked={checkedItems[4] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[4] || false}>
-                            Ações de risco (como excluir itens) sempre pedem confirmação antes de prosseguir?
-                        </ItemText>
-                        <ItemDescription>(ex.: Ao tentar excluir um item, sempre aparece uma janela de confirmação.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(5)} 
-                            checked={checkedItems[5] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[5] || false}>
-                            O estado de carregamento é consistente em todas as telas?
-                        </ItemText>
-                        <ItemDescription>(ex.: O ícone de carregamento sempre é o mesmo, como uma barra ou um círculo girando.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
+          <ChecklistContainer>
+                {items.map((item, index) => (
+                    <CheckItem
+                        key={index}
+                        index={index}
+                        text={item.text}
+                        textDescription={item.textDescription}
+                        isChecked={item.isChecked} // Passar o estado para o CheckItem
+                        onCheckChange={handleCheckChange} // Passar a função de callback
+                    />
+                ))}
             </ChecklistContainer>
 
-            <Navigation>
-                <Link to="/checklist/checklist1.jsx">
-                    <ButtonSecondary>Voltar</ButtonSecondary>
-                </Link>
-                <Link to="/checklist/checklist3.jsx">
-                    <Button disabled={!allChecked}>Avançar!</Button>
-                </Link>
-            </Navigation>
-        </Container>
-    );
-}
+
+          <Navigation>
+              <SecondaryButton caminho="/checklist/checklist1" texto="Voltar" />
+              <PrimaryButton caminho="/checklist/checklist3" texto="Avançar!" disabled={!isButtonEnabled} />
+          </Navigation>
+      </Container>
+  );
+  }
 
 export default Checklist2;

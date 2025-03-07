@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { DivTexts, Title, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container, Button } from './styles';
-import Gif from '../../assets/gif';
+import React from 'react'
+import { DivTexts, Title, Subtitle, Container } from './styles'
+import Gif from '../../assets/gif'
+import PrimaryButton from "../../components/primaryButton/primaryButton"
+import { useNavigate } from 'react-router-dom'
 
 function Conclusao() {
+
+  const resetChecklist = () => {
+    // Limpa os itens do checklist armazenados no localStorage
+    localStorage.clear()
+  }
+
   return (
-   <div>
       <Container>
 
         <DivTexts>
@@ -14,13 +20,11 @@ function Conclusao() {
         </DivTexts>
 
         <Gif />
-        <Link to="/checklist/checklist1.jsx">
-          <Button>Iniciar outro checklist!</Button>
-        </Link>
+
+        <PrimaryButton texto="Iniciar outro checklist!" click={resetChecklist} caminho="/checklist/checklist1"/>
 
       </Container>
-   </div>
-  );
+  )
 }
 
-export default Conclusao;
+export default Conclusao

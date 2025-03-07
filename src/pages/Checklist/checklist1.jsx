@@ -1,142 +1,76 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Title, Navigation, Description, ItemDescription, ChecklistContainer, ItemContainer, ItemText, Checkbox, Subtitle, Container, DivTexts, Button, ButtonSecondary} from './styles';
+import { useEffect, useState } from 'react'
+import { Title, Subtitle, Container, DivTexts, Navigation, ChecklistContainer } from './styles'
+import PrimaryButton from "../../components/primaryButton/primaryButton"
+import SecondaryButton from "../../components/secondaryButton/secondaryButton"
+import StepperComponent from "../../components/stepper/stepper"
+import CheckItem from '../../components/checkItem/checkItem'
 
 function Checklist1() {
-    const [checkedItems, setCheckedItems] = useState({});
+    const [items, setItems] = useState([
+        { text: "As cores seguem o padrão previsto no Figma?", textDescription: "Ex: Botões e tags sempre com o mesmo código hexadecimal do Figma.", isChecked: false },
+        { text: "A tipografia possui padrão de fontes e tamanhos esperados?", textDescription: "Ex: O título está sempre com Roboto Bold 24px.", isChecked: false },
+        { text: "Os ícones são intuitivos e mantêm o mesmo estilo e funcionalidade?", textDescription: "Ex: O ícone de \"Exportar\" é sempre o mesmo, como no Figma.", isChecked: false },
+        { text: "O espaçamento entre os elementos é consistente e adequado?", textDescription: "Ex: Sempre 16px entre os botões e 32px entre os títulos e o conteúdo.", isChecked: false },
+        { text: "Todos os elementos estão alinhados corretamente, sem desvio de padrões?", textDescription: "Ex: Os botões estão sempre alinhados à direita.", isChecked: false },
+        { text: "Os componentes estão com os tamanhos proporcionais e consistentes?", textDescription: "Ex: Todos os botões têm 44px de altura.", isChecked: false }
+    ])
 
-    // Total de checkboxes
-    const totalCheckboxes = 6;
+    const [isButtonEnabled, setIsButtonEnabled] = useState(false)
 
-    // Função para verificar se todos os checkboxes estão marcados
-    const allChecked = Object.keys(checkedItems).length === totalCheckboxes && 
-                        Object.values(checkedItems).every(value => value);
+    // Recuperar o estado salvo do localStorage
+    useEffect(() => {
+        const savedItems = localStorage.getItem(`checklist-items-page-${0}`)
+        if (savedItems) {
+            const loadedItems = JSON.parse(savedItems)
+            setItems(loadedItems)
 
-    const handleCheckboxChange = (index) => {
-        setCheckedItems((prev) => ({
-            ...prev,
-            [index]: !prev[index]  
-        }));
-    };
+            // Verifica se todos os checkboxes estão marcados após carregar
+            const allChecked = loadedItems.every(item => item.isChecked)
+            setIsButtonEnabled(allChecked)
+        }
+    }, [])
 
-    
+    // Função para verificar se todos os itens estão marcados
+    const handleCheckChange = (index, checked) => {
+        const updatedItems = [...items]
+        updatedItems[index].isChecked = checked
+        setItems(updatedItems)
+
+        localStorage.setItem(`checklist-items-page-${0}`, JSON.stringify(updatedItems))
+
+        // Verifica se todos os itens estão marcados
+        const allChecked = updatedItems.every(item => item.isChecked)
+        setIsButtonEnabled(allChecked)
+    }
 
     return (
         <Container>
+            <StepperComponent page={0} />
             <DivTexts>
                 <Title>Consistência Visual</Title>
                 <Subtitle>Garanta que a interface siga os padrões de UX para uma experiência visual coesa e alinhada.</Subtitle>
             </DivTexts>
 
             <ChecklistContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(0)} 
-                            checked={checkedItems[0] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[0] || false}>
-                            As cores seguem o padrão previsto no Figma?
-                        </ItemText>
-                        <ItemDescription>(ex.: Botões de salvar sempre com a cor verde e botões de download com outlined e ícone.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(1)} 
-                            checked={checkedItems[1] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[1] || false}>
-                            A tipografia possui padrão de fontes e tamanhos esperados?
-                        </ItemText>
-                        <ItemDescription>(ex.: O título está sempre com Roboto Bold 24px.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(2)} 
-                            checked={checkedItems[2] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[2] || false}>
-                            Os ícones são intuitivos e mantêm o mesmo estilo e funcionalidade?
-                        </ItemText>
-                        <ItemDescription>(ex.: O ícone de "Download" é sempre o mesmo, como no Figma.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(3)} 
-                            checked={checkedItems[3] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[3] || false}>
-                            O espaçamento entre os elementos é consistente e adequado?
-                        </ItemText>
-                        <ItemDescription>(ex.: O espaçamento entre os botões é sempre de 16px.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(4)} 
-                            checked={checkedItems[4] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[4] || false}>
-                            Todos os elementos estão alinhados corretamente, sem desvio de padrões?
-                        </ItemText>
-                        <ItemDescription>(ex.: Os botões estão sempre alinhados à direita.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
-                <ItemContainer>
-                    <Checkbox>
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleCheckboxChange(5)} 
-                            checked={checkedItems[5] || false} 
-                        />
-                        <span></span>
-                    </Checkbox>
-                    <Description>
-                        <ItemText isChecked={checkedItems[5] || false}>
-                            Os componentes estão com os tamanhos proporcionais e consistentes em todas as telas?
-                        </ItemText>
-                        <ItemDescription>(ex.: Todos os botões têm 48px de altura.)</ItemDescription>
-                    </Description>
-                </ItemContainer>
+                {items.map((item, index) => (
+                    <CheckItem
+                        key={index}
+                        index={index}
+                        text={item.text}
+                        textDescription={item.textDescription}
+                        isChecked={item.isChecked} // Passar o estado para o CheckItem
+                        onCheckChange={handleCheckChange} // Passar a função de callback
+                    />
+                ))}
             </ChecklistContainer>
 
+
             <Navigation>
-                <ButtonSecondary>Voltar</ButtonSecondary>
-                <Link to="/checklist/checklist2.jsx">
-                    <Button disabled={!allChecked}>Avançar!</Button>
-                </Link>
+                <SecondaryButton caminho="/" texto="Voltar" />
+                <PrimaryButton caminho="/checklist/checklist2" texto="Avançar!" disabled={!isButtonEnabled} />
             </Navigation>
         </Container>
-    );
+    )
 }
 
-export default Checklist1;
+export default Checklist1
