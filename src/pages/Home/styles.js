@@ -22,6 +22,10 @@ export const Container = styled.div`
     gap: 8px;
     border-radius: 16px;
   }
+
+  @media (max-width: 1550px) {
+    min-height: 650px;
+  }
 `;
 
 export const DivTexts = styled.div`

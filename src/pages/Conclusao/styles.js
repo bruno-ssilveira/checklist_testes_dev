@@ -12,7 +12,7 @@ export const Container = styled.div`
   min-height: 800px;
   padding: 8%;
   border-radius: 32px;
-  gap: 32px;
+  gap: 10px;
 
   @media (max-width: 400px) {
     width: 90%;
@@ -21,6 +21,10 @@ export const Container = styled.div`
     padding: 16px;
     gap: 8px;
     border-radius: 16px;
+  }
+
+  @media (max-width: 1550px) {
+    min-height: 650px;
   }
 `;
 
@@ -56,17 +60,6 @@ export const Subtitle = styled.h2`
     font-size: 20px;
     width: 90%;
     margin-left: 30px;
-  }
-`;
-
-export const Gif = styled.img`
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-
-  @media (max-width: 400px) {
-    width: 100%;
-    max-width: 100px;
   }
 `;
 
